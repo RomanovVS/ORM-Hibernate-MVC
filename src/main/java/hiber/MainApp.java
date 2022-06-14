@@ -3,7 +3,6 @@ package hiber;
 import hiber.config.AppConfig;
 import hiber.model.Car;
 import hiber.model.User;
-import hiber.service.CarService;
 import hiber.service.UserService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -16,7 +15,6 @@ public class MainApp {
             new AnnotationConfigApplicationContext(AppConfig.class);
 
       UserService userService = context.getBean(UserService.class);
-      CarService carService = context.getBean(CarService.class);
 
       userService.add(new User("User1", "Lastname1", "user1@mail.ru"));
       userService.add(new User("User2", "Lastname2", "user2@mail.ru"));
@@ -55,7 +53,7 @@ public class MainApp {
 
       System.out.println("___________________________________________");
       System.out.println("checking method getUserByCar()");
-      System.out.println(carService.getUserByCar("Жигули", 2107).toString());
+      System.out.println(userService.getUserByCar("Жигули", 2107).toString());
       context.close();
    }
 }
